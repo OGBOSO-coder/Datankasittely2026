@@ -1,5 +1,6 @@
 import pandas as pd
 
+filepath = 'data/books.csv'
 # ---------------------------------------------------
 # Task 1: Load the data
 # ---------------------------------------------------
@@ -11,8 +12,10 @@ def load_data(filepath):
     📌 What to return:
     - A pandas DataFrame created using read_csv()
     """
+    DataFrame = pd.read_csv(filepath)
+    
     # TODO: Load the CSV file
-    return None # Should return DataFrame instead of None
+    return DataFrame # Should return DataFrame instead of None
 
 
 # ---------------------------------------------------
@@ -26,8 +29,10 @@ def get_unique_genres(df):
     📌 What to return:
     - A list of unique genre values from df["genre"]
     """
+    list = df["genre"].unique().tolist()
+    
     # TODO: Extract unique genres
-    return None  # Shold return a list instead of None
+    return list  # Shold return a list instead of None
 
 
 # ---------------------------------------------------
@@ -41,8 +46,9 @@ def find_books_by_author(df, author_name):
     📌 What to return:
     - A filtered DataFrame containing only rows where df["author"] is author_name
     """
+    DataFrame = df[df["author"] == author_name]
     # TODO: Filter by author
-    return None  # Should return a DataFrame instead of None
+    return DataFrame  # Should return a DataFrame instead of DataFrame
 
 
 # ---------------------------------------------------
@@ -56,8 +62,10 @@ def get_highest_rating(df):
     📌 What to return:
     - A single float value: the maximum of df["rating"]
     """
+
+    float = df["rating"].max()
     # TODO: Find the highest rating
-    return None  # Should return a float value instead of None
+    return float  # Should return a float value instead of None
 
 
 # ---------------------------------------------------
@@ -78,11 +86,11 @@ if __name__ == "__main__":
 
     # Uncomment these lines as you implement each function:
     
-    #print("\n--- Task 2 ---\n")
-    #print(get_unique_genres(df))
+    print("\n--- Task 2 ---\n")
+    print(get_unique_genres(df))
 
-    #print("\n--- Task 3 ---\n")
-    #print(find_books_by_author(df, "George Orwell"))
+    print("\n--- Task 3 ---\n")
+    print(find_books_by_author(df, "George Orwell"))
 
-    #print("\n--- Task 4 ---\n")
-    #print(get_highest_rating(df))
+    print("\n--- Task 4 ---\n")
+    print(get_highest_rating(df))
