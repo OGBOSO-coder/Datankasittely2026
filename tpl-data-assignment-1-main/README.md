@@ -21,13 +21,13 @@ The data source for this project is the **JSONPlaceholder Users API**:
 
 The files and modules you need to include:
 ```
-database                # A database module to create a database
+database                # A database module to create a database *
 api                     # An API module to fetch data from API and save to DB
 data protection         # A simple data protection module
 data analysis           # A simple data analysis module
-main.py                 # Main script that uses modules mentioned above
-configuration.py        # Config file to use for different variables
-requirements.txt        # Dependencies list
+main.py                 # Main script that uses modules mentioned above *
+configuration.py        # Config file to use for different variables *
+requirements.txt        # Dependencies list *
 ```
 
 
