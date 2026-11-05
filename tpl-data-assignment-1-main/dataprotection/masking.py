@@ -1,18 +1,28 @@
+import copy
+
+
 def mask(people):
-    """
-    TODO: Mask emails and phone numbers:
+    """Mask emails and phone numbers:
+
     - keep domain part of email, mask local part
     - keep last 2 digits of phone number, mask the rest with asterisks
-    - return same datastructure with masked data
+    - return same datastructure with masked data without mutating original
     """
-    for person in people:
-        email = person['email']
-        local_part, domain_part = email.split('@')
-        masked_local_part = '*' * len(local_part)
-        person['email'] = masked_local_part + '@' + domain_part
+    # Otetaan syväkopio, jotta alkuperäisen users-listan tiedot eivät muutu
+    masked_people = copy.deepcopy(people)
 
-        phone = person['phone']
-        masked_phone = '*' * (len(phone) - 2) + phone[-2:]
-        person['phone'] = masked_phone
-    
-    return people
+    for person in masked_people:
+        # Sähköpostin maskaus
+        email = person.get('email', '')
+        if '@' in email:
+            local_part, domain_part = email.split('@', 1)
+            person['email'] = ('*' * len(local_part)) + '@' + domain_part
+
+        # Puhelinnumeron maskaus (säilytetään 2 viimeistä merkkiä)
+        phone = str(person.get('phone', ''))
+        if len(phone) > 4:
+            person['phone'] = ('*' * (len(phone) - 4)) + phone[-4:]
+        else:
+            person['phone'] = '**'
+
+    return masked_people
