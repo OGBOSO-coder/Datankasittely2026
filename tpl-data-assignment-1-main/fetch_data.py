@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from db.models import User
 from db.models import masked_user
-from dataprotection.masking import mask
+from dataprotection.Cryptaus import mask
 from config import DATABASE_URL
 from config import API_URL
 
@@ -29,8 +29,8 @@ def main():
     for mu in masked_users:
         masked_user_entry = masked_user(
             id=mu["id"],
-            name=mu["name"],
-            username=mu["username"],
+            name=mu["crypted_name"],
+            username=mu["crypted_username"],
             masked_email=mu["email"],
             masked_phone=mu["phone"]
         )

@@ -12,6 +12,10 @@ def mask(people):
     masked_people = copy.deepcopy(people)
 
     for person in masked_people:
+        person["crypted_name"] = person["name"][0] + "*" * (len(person["name"]) - 1)
+        del person["name"]
+        person["crypted_username"] = person["username"][0] + "*" * (len(person["username"]) - 1)
+        del person["username"]
         # Sähköpostin maskaus
         email = person.get('email', '')
         if '@' in email:
