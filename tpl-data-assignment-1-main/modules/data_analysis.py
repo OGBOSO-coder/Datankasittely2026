@@ -17,7 +17,7 @@ def analyze_users(df: pd.DataFrame):
 
 def main():
     engine = create_engine(DATABASE_URL)
-    df = pd.read_sql("SELECT * FROM users", con=engine)
+    df = pd.read_sql("SELECT * FROM masked_users", con=engine)
 
 
     analyze_users(df)
