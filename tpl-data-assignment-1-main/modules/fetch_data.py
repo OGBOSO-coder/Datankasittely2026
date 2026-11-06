@@ -10,7 +10,7 @@ from config import API_URL
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 
-def main():
+def fetch_data():
     response = requests.get(API_URL)
     users = response.json()
     masked_users = mask(users)
@@ -40,4 +40,4 @@ def main():
     print("Users inserted into database.")
 
 if __name__ == "__main__":
-    main()
+    fetch_data()

@@ -1,6 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from config import DATABASE_URL  # tai voit käyttää suoraan API:sta tullutta sanakirjalistaa
+from config import DATABASE_URL
 
 def analyze_users(df: pd.DataFrame):
     print("--- Datan muoto (rivit, sarakkeet) ---")
@@ -16,11 +16,9 @@ def analyze_users(df: pd.DataFrame):
     print()
 
 def main():
-    # Vaihtoehto A: Luku suoraan tietokannasta SQLAlchemy-moottorin avulla
     engine = create_engine(DATABASE_URL)
     df = pd.read_sql("SELECT * FROM users", con=engine)
-    
-    # (Vaihtoehto B: Jos analysoit suoraan aiempaa API-vastausta: df = pd.DataFrame(users))
+
 
     analyze_users(df)
 
